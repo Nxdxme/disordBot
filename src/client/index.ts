@@ -1,4 +1,6 @@
 import { Client, GatewayIntentBits } from 'discord.js'
+import { registerEvents } from '../utils'
+import events from '../events'
 import keys from '../keys'
 
 const client = new Client({
@@ -7,6 +9,8 @@ const client = new Client({
         GatewayIntentBits.GuildMembers,
     ]
 })
+
+registerEvents(client, events)
 
 client.login(keys.clientToken)
     .catch((err) => {
